@@ -1,5 +1,6 @@
 package com.juantito.programacionequiposmoviles
 
+import android.R
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -7,37 +8,33 @@ import androidx.activity.ComponentActivity
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Llamamos a la funcion dentro del mainActiviy
         Pratica01()
-        //enableEdgeToEdge()
-        //setContent {
-        //    ProgramacionEquiposMovilesTheme {
-        //        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        //            Greeting(
-        //                name = "Practica 1",
-        //                modifier = Modifier.padding(innerPadding)
-        //            )
-        //        }
-        //    }
-        //}
+        // Borramos el resto ya que no nesesitamos por ahora en la compilacion
+        // o en la ejecucion de la app, El capitulo 1 aun no llega a mostrar algo en mobil.
     }
 }
+// Cambiamos el main por una Funcion llamada Practica01 que se avanza en el capitulo 3
 fun Pratica01(){
     //Variables - Sintaxis Básica
 
+    // Segun el Cap 1 declaramos un TAG para identificar mas rapido en LogCat y
+    // esta variable llamamos en Log.d(TAG, ....)
     val TAG = "Practica-01"
 
-    val nombre = "Juan Gedoen"
-    Log.d(TAG, "${nombre}")
-    val apellido: String = "Tito Moya"
+    //declaramos variables tanto String, Int, Bouble
+    val nombre = "Juan Gedoen" // Cadena (String)
+    Log.d(TAG, "${nombre}") // Llamamos a la variable nombre dentro de ${}
+    val apellido: String = "Tito Moya" // Aqui a diferencia de nombre especificamos la variable "String"
     Log.d(TAG, "${apellido}")
-    var edad = 25
+    var edad = 25 // Entero (Int)
     Log.d(TAG, "${edad}")
-    var estatura: Double = 1.72
+    var estatura: Double = 1.72 // Decimal (Double)
     Log.d(TAG, "${estatura}")
-    val result: Int
+    val result: Int // Con val nos referimos que es constante no cambia su valor como en "Global", "let", "Const", etc de otro lenguajes
     result = 10
 
-    var contador: Int
+    var contador: Int // A diferencia del val -- var si puede cambiar su valor  como en este caso en un contador
     contador = 1
     contador = 2
 
@@ -264,19 +261,202 @@ fun Pratica01(){
     for ((nombre, edad) in edades) {
         Log.d(TAG, "$nombre tiene $edad años")
     }
+
+    // Estructura de Bucle While
+
+    var conteo = 0
+    while (conteo < 10) {
+        Log.d(TAG, "$conteo")
+        conteo++
+    }
+
+    var linea: String? = ""
+    Log.d(TAG, "Escribe salir para SALIR del bucle")
+    while (linea != "SALIR") {
+        linea = readLine()
+        if (linea != "SALIR") {
+            Log.d(TAG, "Escribiste >> $linea")
+        }
+    }
+
+    while(true) {
+        Log.d(TAG, "Esto nunca detendra")
+    }
+
+    //Areglos (Array)
+
+    val  nombres = arrayOf("Ana", "Pedro", "Luis")
+    val numeros = arrayOf(1, 2, 3, 6, 2, 6, 7)
+
+    val multiplosDeDos = Array(6) {i -> i * 2}
+    Log.d(TAG, "mi array: ${multiplosDeDos}")
+
+    val age = intArrayOf(14, 29, 14, 17, 34, 23)
+    val price = doubleArrayOf(10.9, 14.45, 20.9, 12.9, 5.0)
+
+    val planetas =  arrayOf("Mercurio", "Tierra", "Marte")
+    Log.d(TAG, planetas[0])
+    planetas[0] = "Jupiter"
+    Log.d(TAG, "Número de planetas: ${planetas.size}")
+
+    val colores = arrayOf("Blanco", "Rojo", "Verde", "Celeste")
+    for(color in colores) {
+        Log.d(TAG, color)
+    }
+    for ((indice, valor) in colores.withIndex()) {
+        Log.d(TAG, "Posicion: $indice $valor")
+    }
+
+    val number = intArrayOf(5, 4, 8, 3, 9)
+    Log.d(TAG, "${number.sum()}")
+    Log.d(TAG, "${number.average()}")
+    Log.d(TAG, "${number.maxOrNull()}")
+    Log.d(TAG, "${number.sorted()}")
+
+    //Matrices Array<Array<T>>
+
+    val matriz = arrayOf(
+        arrayOf(1, 1, 4),
+        arrayOf(3, 7 ,2),
+        arrayOf(1, 1, 3)
+    )
+
+    val tablero = Array(3) { IntArray(4) }
+    val matrizLetras = Array(3) { Array(2) { "Vacio" } }
+
+
+    val matrizMod = arrayOf(
+        arrayOf("A", "B"),
+        arrayOf("F", "G")
+    )
+    Log.d(TAG, matrizMod[1][0])
+    matrizMod[1][1] = "L"
+
+    for (i in matrizMod.indices) {
+        for (j in matrizMod[i].indices) {
+            Log.d(TAG, "MI matriz ${matrizMod[i][j]}")
+        }
+    }
+
+    matrizMod.forEach { fila ->
+        fila.forEach { elemento ->
+            Log.d(TAG, "$elemento")
+        }
+    }
+
+    val irregular = arrayOf(
+        arrayOf(1, 4, 7, 3, 9),
+        arrayOf(6, 3, 0),
+        arrayOf(3, 4)
+    )
+
+    //Coleccion (Set)
+
+    val colors = setOf("Blue", "Yellow", "Brown", "Skyblue")
+    Log.d(TAG, "$colors")
+    Log.d(TAG, "${colors.size}")
+
+
+    val inviteds = mutableSetOf("Ana", "Carlos")
+    inviteds.add("Jaime")
+    inviteds.add("Pedro")
+    inviteds.remove("Ana")
+    Log.d(TAG, "$inviteds")
+
+    val numA = setOf(1, 2, 3)
+    val numB = setOf(3, 4, 5)
+    Log.d(TAG, "${numA union numB}")
+    Log.d(TAG, "${numA intersect numB}")
+    Log.d(TAG, "${numA subtract numB}")
+
+    val numberSorted = sortedSetOf(5, 2, 7, 4, 1)
+    Log.d(TAG, "$numberSorted")
+
+    val lenguages = setOf("Python", "Java", "Html", "Ruby", "Kotlin")
+    if ("Kotlin" in lenguages) {
+        Log.d(TAG, "Kotlin está en el conjunto!")
+    }
+
+    //LISTAS
+
+    val fruits = listOf("Apple", "Banana", "Tomato")
+    Log.d(TAG, fruits[0])
+    Log.d(TAG, fruits.get(1))
+
+    val tasks = mutableListOf("Shower dog", "Buy Laptop")
+    tasks.add("Study Kotlin")
+    tasks.add("Read Book Programing")
+    tasks.removeAt(0)
+    tasks[0] = "Do Ejercise"
+    Log.d(TAG,"$tasks")
+
+    val numbersList = listOf(1, 5, 3, 7, 9, 4)
+    Log.d(TAG, "${numbersList.first()}")
+    Log.d(TAG, "${numbersList.last()}")
+    Log.d(TAG, "${numbersList.reversed()}")
+    Log.d(TAG, "${numbersList.sorted()}")
+    Log.d(TAG, "${numbersList.contains(5)}")
+
+    val mutable = numbersList.toMutableList()
+    val inmutable = numbersList.toList()
+    val precies = listOf(10, 50, 100, 20)
+    val richs = precies.filter { it > 30 }
+    Log.d(TAG, "$richs")
+
+    //MAPS
+
+    val paises = mapOf(
+        "MX" to "México",
+        "ES" to "España",
+        "AR" to "Argentina"
+        )
+    Log.d(TAG, "${paises["MX"]}")
+    Log.d(TAG, "${paises.get("ES")}")
+    Log.d(TAG, "${paises["FR"]}")
+
+    val inventario = mutableMapOf(
+        "Manzanas" to 10,
+        "Peras" to 5
+        )
+    inventario["Plátanos"] = 20
+    inventario["Manzanas"] = 15
+    inventario.remove("Peras")
+    Log.d("MI_TAG", "$inventario")
+
+    val capitales = mapOf("Perú" to "Lima", "Chile" to "Santiago")
+    for ((pais, capital) in capitales) {
+        Log.d("MI_TAG", "La capital de $pais es $capital")
+        }
+
+    val edadMap = mapOf("Luis" to 25)
+    Log.d("MI_TAG", "${edadMap.getOrDefault("Ana", 0)}")
+    Log.d("MI_TAG", "${edadMap.containsKey("Luis")}")
+
+    val ranking = sortedMapOf("C" to 3, "A" to 1, "B" to 2)
+    Log.d("MI_TAG", "$ranking")
+
+    //NULL SAFETY
+
+    var nameSafety: String = "Gemini"
+    // nombre = null ← ERROR de compilación
+    var nameNulo: String? = "Gemini"
+    nameNulo = null
+
+    val longitud = nameNulo?.length
+
+    val cantidad = nameNulo?.length ?: 0
+
+    val aLaFuerza = nameNulo!!
+
+    val usuario: String? = "Carlos"
+    usuario?.let {
+        Log.d("MI_TAG", "Enviando correo a $it")
+        }
+
+    val texto: String? = "Hola"
+    if (texto != null) {
+        Log.d("MI_TAG", "${texto.length}") // No necesitas "?" aquí dentro
+        }
 }
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Text(
-//        text = "Hello $name!",
-//        modifier = modifier
-//    )
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    ProgramacionEquiposMovilesTheme {
-//        Greeting("Android")
-//    }
-//}
+
+//se elimina @Composable y @Preview como capitulo 2 no corresponde a ello.
