@@ -1,6 +1,5 @@
 package com.juantito.programacionequiposmoviles
 
-import android.R
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -16,7 +15,7 @@ class MainActivity : ComponentActivity() {
 }
 // Cambiamos el main por una Funcion llamada Practica01 que se avanza en el capitulo 3
 fun Pratica01(){
-    //Variables - Sintaxis Básica
+    //VARIABLES - SINTAXIS SIMPLE ------------------------------------------------------------------
 
     // Segun el Cap 1 declaramos un TAG para identificar mas rapido en LogCat y
     // esta variable llamamos en Log.d(TAG, ....)
@@ -24,101 +23,113 @@ fun Pratica01(){
 
     //declaramos variables tanto String, Int, Bouble
     val nombre = "Juan Gedoen" // Cadena (String)
-    Log.d(TAG, "${nombre}") // Llamamos a la variable nombre dentro de ${}
     val apellido: String = "Tito Moya" // Aqui a diferencia de nombre especificamos la variable "String"
-    Log.d(TAG, "${apellido}")
     var edad = 25 // Entero (Int)
-    Log.d(TAG, "${edad}")
-    var estatura: Double = 1.72 // Decimal (Double)
-    Log.d(TAG, "${estatura}")
+    val estatura: Double = 1.72 // Decimal (Double)
     val result: Int // Con val nos referimos que es constante no cambia su valor como en "Global", "let", "Const", etc de otro lenguajes
     result = 10
+    Log.d(TAG, "$nombre") // Llamamos a la variable nombre dentro de ${}
+    Log.d(TAG, "$apellido")
+    Log.d(TAG, "$edad")
+    Log.d(TAG, "$estatura")
+    Log.d(TAG, "$result")
 
-    var contador: Int // A diferencia del val -- var si puede cambiar su valor  como en este caso en un contador
+
+    var contador: Int // A diferencia del val -> var si puede cambiar su valor  como en este caso en un contador
     contador = 1
     contador = 2
 
     var correo: String = "Juangedeont@gmail.com"
-    var telefono: String? = null
+    var telefono: String? = null // Intregamos un null y tambien con "?" decimos q acepta null
     telefono = "987654321"
 
-    //Operadores Matemáticos
+    //OPERADORES MATEMATICOS -----------------------------------------------------------------------
 
     val a = 15
     val b = 7
 
-    Log.d(TAG, "${a + b}")
+    Log.d(TAG, "${a + b}") // Dentro de {} ponemos la operacion con o lo que va operar sea +,-,*, etc.
     Log.d(TAG, "${a - b}")
     Log.d(TAG, "${a / b}")
     Log.d(TAG, "${a * b}")
     Log.d(TAG, "${a % b}")
 
-    var cont = 10
+    var cont = 10 // Operador de cont = cont + 1 esta simplificado con cont++ se visualiza en la siguiente linea
     cont++
-    Log.d(TAG, "${cont}")
+    Log.d(TAG, "$cont")
 
-    val resultado = 5 / 2
-    Log.d(TAG, "${resultado}")
+    val resultado = 5 / 2 // En la misma declaracion de variables tambien podemos incluir operaciones que almacena el resultado
+    Log.d(TAG, "$resultado")
 
     val exacto = 5.0 / 2
-    Log.d(TAG, "${exacto}")
+    Log.d(TAG, "$exacto")
 
     val calculo = 10 + 5 * 2
-    Log.d(TAG, "${calculo}")
-    val conParentesis = (10 + 5) * 2
-    Log.d(TAG, "${conParentesis}")
+    Log.d(TAG, "$calculo")
+    val conParentesis = (10 + 5) * 2 // Similar una operacion pero solo ahora incluye el parentesis, para priorizar la operacion q inicia
+    Log.d(TAG, "$conParentesis")
 
     // Operadores de Comparación
     val x = 10
     val y = 20
 
-    Log.d(TAG, "${x == y}")
-    Log.d(TAG, "${x != y}")
-    Log.d(TAG, "${x < y}")
-    Log.d(TAG, "${x >= y}")
+    // Son expresiones Booleanas como resultado las siguiente linea te dara un valor de True or False
+    Log.d(TAG, "${x == y}") // si la variable X es igual a Y dara resultado True pero si no False que en nuestro caso es Falso
+    Log.d(TAG, "${x != y}") // aqui similar solo dira q X no es igual a Y, si es verdad True sino False
+    Log.d(TAG, "${x < y}") // Similar pero ahora compara si X es menor a Y, como resultado True 10 es menor q 20
+    Log.d(TAG, "${x >= y}") //  Similar ahora dice si X = 10 es mayor y igual que Y = 20, Resultado es FAlse
 
     val c = "Hola"
     val d = "Hola"
 
-    Log.d(TAG, "${c == d}")
-    Log.d(TAG, "${c === d}")
+    Log.d(TAG, "${c == d}") // Anteriormente ya vimos el caso aqui sera True por que ambos String son los mismo
+    Log.d(TAG, "${c === d}") // Esto ya hace referencia si apuntan a la misma direccion de memoria
 
-    // llamamo a edad que declaramos arriba
+    // llamamo a edad que declaramos arriba que es "val edad = 25"
 
-    if (edad in 18..30){
+    // En la condicion if de abajo dentro de los parentesis hay una condicion dice que si o si debe cumplir
+    // En este caso dice que edad debe estra dentro del rango de 18 a 30 como edad es 25 y esta dentro del rango
+    // Pasa a las llaves del if y ejecuta la linea de -- Log
+    if (edad in 18..30){ // in es con condicionador de "debe estar dentro de"
         Log.d(TAG, "Estas en el rango de edad")
     }
-    if (edad in 1..17){
+    if (edad in 1..17){ // aqui similar solo q son para el rango de 1 a 17 si cumple pasa a las llaves del if
         Log.d(TAG, "Eres menor de edad")
     }
 
-    val algo: Any = "soy un texto"
+    val algo: Any = "soy un texto" // Any es un tipo de super clase q acepta String
 
+    // El is es como confirmar, dice si la variable algo es de tipo String
     if (algo is String){
         Log.d(TAG, "la longitud es ${algo.length}")
     }
-    if (algo !is Int) {
+    if (algo !is Int) { // el !is no es de tipo, la variable algo no es de tipo Int
         Log.d(TAG, " Es un numero entero")
     }
 
-    //Estructura de control If-Else
+    //ESTRUCTURA DE CONTROL IF-ELSE ----------------------------------------------------------------
+
     var temperatura = 25
 
-    if (temperatura > 30){
+    if (temperatura > 30){ // Si cumple con la condicion (...)
         Log.d(TAG, "Hace calor")
-    } else if (temperatura in 15..30){
+    } else if (temperatura in 15..30){ // si no cumple el 1er if de la condicion esta la verifica
         Log.d(TAG, "el clima esta agradable")
-    } else {
+    } else { // Si en caso no cumple ninguna de las condiciones o los ifs de arriba
         Log.d(TAG, "hace frio")
     }
 
     edad = 18
+    // Si lo anterior era en bloques los If de la forma tradicional
+    // en la siguiente vemos como un operador ternario pero lo remplazamos con If en kotlin
+    // es seria otra forma de hacer un if con la declaracion de variable sin usar {}
     val mensaje = if (edad >= 18) "es mayor de edad" else "es menor de edad"
-    Log.d(TAG, "${mensaje}")
+    Log.d(TAG, "$mensaje")
 
     val e = 10
     val f = 20
 
+    // Aqui el metodo ternacion seria pero con bloques el if junto a la declaracion de variable
     val mayor = if (e > f){
         Log.d(TAG, "Eligiendo a ...")
         a
@@ -129,71 +140,88 @@ fun Pratica01(){
 
     val tieneEntrada = true
     edad = 20
+    // aqui seria operadores logicos, como el && representa y
+    // Seria como dos condiciones dentro de un (...) de if
+    // cuando es && significa que ambas condiciones deben cumplir osea deben ser True
     if (tieneEntrada && edad >= 18){
         Log.d(TAG, "Bienvenido al concierto")
-    } else {
+    } else { // Si en caso no cumpla la condicon de arriba
         Log.d(TAG, "NO puedes pasar")
     }
 
-    //EStructura de Control When
+    //ESTRUCTURA DE CONTROL WHEN -------------------------------------------------------------------
+
     val dia  = 3
+    // Similar al switch de python
+    // When toma la variable, segun eso busca si el valor es igual al que esta dentro de {}
     when (dia) {
         1       -> Log.d(TAG, "Lunes")
         2       -> Log.d(TAG, "Martes")
         3       -> Log.d(TAG, "Miercoles")
-        else    -> Log.d(TAG, "Otro dia")
+        else    -> Log.d(TAG, "Otro dia") // Si en caso no sea ninguna esto seria la ultima opcion como if-else
     }
 
     val nota = 8
+    // Aqui manejamos con rango
     when (nota) {
-        10, 9   -> Log.d(TAG, "Excelnte")
+        10, 9   -> Log.d(TAG, "Excelnte") // Si nota es 10 y 9
         8, 7    -> Log.d(TAG, "Muy Excelnte")
-        in 5..6 -> Log.d(TAG, "Aprovado")
-        !in 0..10   -> Log.d(TAG, "Nota no valida")
-        else -> Log.d(TAG, "Suspendido")
+        in 5..6 -> Log.d(TAG, "Aprovado") // Si nota "esta dentro" de 5 a 6
+        !in 0..10   -> Log.d(TAG, "Nota no valida") // Si nota "no esta dentro" de 0 a 10
+        else -> Log.d(TAG, "Suspendido") // Si en caso no es ninguno de los anteriores
     }
 
     val operacion = "Suma"
     val ab = 10
     val bc = 5
+    // SImilar el caso pero como operacion ternario en esta caso si el string o cadena o palabra esta dentro de when {}
+    // Segun la variable operacion hace la operacion en when
     val resultad = when (operacion) {
-        "Suma"              -> ab + bc
+        "Suma"              -> ab + bc // Ya no es una salida simple si nos ña salida es una operacion y se guarda en resultado
         "Resta"             -> ab - bc
         "Multiplicacion"    -> ab * bc
-        else                -> 0
+        else                -> 0 // Si en caso no
     }
-    Log.d(TAG, "El resultado es: ${resultad}")
+    Log.d(TAG, "El resultado es: $resultad") // Imprimimos el resultado segun lo que hace when
 
     val xy = 15
     val yz = 20
+    // En este caso primero evalua la operacion de comparacion (>, <, ==) y luego imprime
     when {
-        xy > yz -> Log.d(TAG, "x es mayor que y")
+        xy > yz -> Log.d(TAG, "x es mayor que y") // Primero evalua si xy > yz es True
         xy < yz -> Log.d(TAG, "x es menor que y")
         xy == yz -> Log.d(TAG, "son iguales")
         else -> Log.d(TAG, "condicion extraña")
     }
 
+    // La funcion pide un valor osea esta declarada con parametro esa funcion
+    // el "is" dentro de when dice si obj es entero o string o double
     fun describir(obj: Any){
-        when (obj){
-            is Int  -> Log.d(TAG, "Es un numero entero: $obj")
-            is String  -> Log.d(TAG, "Es un texto de longitudo: ${obj.length}")
+        when (obj){ // segun el parametro o valor pasado por funcion evalua
+            is Int  -> Log.d(TAG, "Es un numero entero: $obj") // Si es de tipo in el valor o parametro imprime eso
+            is String  -> Log.d(TAG, "Es un texto de longitudo: ${obj.length}") // Si es string imprime la linea
             is Double  -> Log.d(TAG, "Es un decimal: $obj")
             else -> Log.d(TAG, "Tipo desconocido")
         }
     }
+    // Aqui pasamos el parametro o valor a evaluar que es nueve
     describir(9)
 
-    //Estructura de Control Do-While
+    //ESTRUCTURA DO-WHILE --------------------------------------------------------------------------
 
-//    var numero: Int
-//    do {
-//        Log.d(TAG, "Introduce un numero mayor que 10 para salir")
-//        numero = readLine()?.toInt() ?: 0
-//    } while (numero <= 10)
-//    Log.d(TAG, "Gracias!! Saliste del bucle,")
+    var numero: Int
+    // Aqui sera como si nosotros ingresaramos el numero donde nos pide en do
+    numero = 17
+
+    // Primero la ejecucion donde "do" ejecuta primero y luego while
+    // si no pusieramos numero = 17 el bucle seguiria preguntando introduce...
+    do {
+        Log.d(TAG, "Introduce un numero mayor que 10 para salir")
+        numero = readLine()?.toInt() ?: 0 // Lee si la linea es 10
+    } while (numero <= 10) // Va preguntar hasta q numero sea mayor que 10
+    Log.d(TAG, "Gracias!! Saliste del bucle,")
 
     var xyz = 100
-
     while (xyz < 10) {
         Log.d(TAG, "Esto no se vera")
         xyz++
@@ -232,7 +260,7 @@ fun Pratica01(){
         }
     }
 
-    //Estructura de Bucle For
+    //ESTRUCTURA DE BUCLE FOR
 
     for (i in 1..5) {
         Log.d(TAG, "$i")
@@ -262,7 +290,7 @@ fun Pratica01(){
         Log.d(TAG, "$nombre tiene $edad años")
     }
 
-    // Estructura de Bucle While
+    // ESTRUCTURA DE BUCLE WHILE
 
     var conteo = 0
     while (conteo < 10) {
@@ -283,7 +311,7 @@ fun Pratica01(){
         Log.d(TAG, "Esto nunca detendra")
     }
 
-    //Areglos (Array)
+    //ARREGLOS (Array)
 
     val  nombres = arrayOf("Ana", "Pedro", "Luis")
     val numeros = arrayOf(1, 2, 3, 6, 2, 6, 7)
@@ -313,7 +341,7 @@ fun Pratica01(){
     Log.d(TAG, "${number.maxOrNull()}")
     Log.d(TAG, "${number.sorted()}")
 
-    //Matrices Array<Array<T>>
+    //MATRIZ ARRAY<Array<T>>
 
     val matriz = arrayOf(
         arrayOf(1, 1, 4),
@@ -350,7 +378,7 @@ fun Pratica01(){
         arrayOf(3, 4)
     )
 
-    //Coleccion (Set)
+    //COLECCION (Set)
 
     val colors = setOf("Blue", "Yellow", "Brown", "Skyblue")
     Log.d(TAG, "$colors")
