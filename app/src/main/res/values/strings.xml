@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">ProgramacionEquiposMoviles</string>
+    <string name="practica_capitulo_10">Práctica capítulo 10 · Widgets</string>
+    <string name="imagen_titulo">Imagen local</string>
+    <string name="imagen_descripcion">Icono de la aplicación</string>
+    <string name="imagen_pulsada">Pulsaste la imagen</string>
+    <string name="reloj_titulo">Hora local</string>
+    <string name="reloj_12_horas" translatable="false">hh:mm:ss a</string>
+    <string name="reloj_24_horas" translatable="false">HH:mm:ss</string>
+    <string name="progreso_titulo">Progreso de la tarea</string>
+    <string name="progreso_en_curso">Tarea en curso</string>
+    <string name="progreso_iniciar">Iniciar progreso</string>
+    <string name="progreso_completado">Progreso completado</string>
+    <string name="porcentaje">%1$d %%</string>
+    <string name="volumen_titulo">Volumen de ejemplo</string>
+    <string name="volumen_valor">Volumen: %1$d %%</string>
+    <string name="tamano_titulo">Tamaño de texto</string>
+    <string name="tamano_valor">Tamaño de muestra: %1$s</string>
+    <string name="calificacion_titulo">Calificación</string>
+    <string name="calificacion_valor">Calificación: %1$.1f / 5</string>
+    <string name="calendario_titulo">Calendario</string>
+    <string name="fecha_elegida">Fecha seleccionada: %1$s</string>
+    <string name="busqueda_titulo">Buscar temas</string>
+    <string name="busqueda_ayuda">Buscar entre los temas</string>
+    <string name="sin_resultados">No hay temas que coincidan con la búsqueda.</string>
+    <string name="tema_elegido">Seleccionaste: %1$s</string>
+
+    <string-array name="temas_busqueda">
+        <item>Android Studio</item>
+        <item>Kotlin</item>
+        <item>Java</item>
+        <item>Firebase</item>
+        <item>Retrofit</item>
+        <item>Glide</item>
+    </string-array>
+
+    <string-array name="opciones_tamano_texto">
+        <item>Pequeño</item>
+        <item>Mediano</item>
+        <item>Grande</item>
+    </string-array>
+
+    <integer-array name="tamanos_texto_sp">
+        <item>14</item>
+        <item>18</item>
+        <item>22</item>
+    </integer-array>
 </resources>

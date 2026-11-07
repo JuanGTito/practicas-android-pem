@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pantalla_widgets"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/practica_capitulo_10"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <!-- Imagen local y reloj que muestra la hora del dispositivo. -->
+        <TextView
+            style="@style/Widgets.SectionTitle"
+            android:text="@string/imagen_titulo" />
+
+        <ImageView
+            android:id="@+id/iv_ejemplo"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/imagen_descripcion"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            style="@style/Widgets.SectionTitle"
+            android:text="@string/reloj_titulo" />
+
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="@string/reloj_12_horas"
+            android:format24Hour="@string/reloj_24_horas"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <View style="@style/Widgets.Divider" />
+
+        <!-- El círculo aparece durante la simulación. La barra horizontal conserva el avance. -->
+        <TextView
+            style="@style/Widgets.SectionTitle"
+            android:text="@string/progreso_titulo" />
+
+        <ProgressBar
+            android:id="@+id/pb_indeterminado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/progreso_en_curso"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/pb_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/progreso_titulo"
+            android:max="100"
+            android:saveEnabled="false" />
+
+        <TextView
+            android:id="@+id/tv_porcentaje"
+            style="@style/Widgets.Value"
+            tools:text="0 %" />
+
+        <Button
+            android:id="@+id/btn_iniciar_progreso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/progreso_iniciar" />
+
+        <TextView
+            style="@style/Widgets.SectionTitle"
+            android:labelFor="@id/sb_volumen"
+            android:text="@string/volumen_titulo" />
+
+        <SeekBar
+            android:id="@+id/sb_volumen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:minHeight="48dp"
+            android:progress="50" />
+
+        <TextView
+            android:id="@+id/tv_volumen"
+            style="@style/Widgets.Value"
+            tools:text="Volumen: 50 %" />
+
+        <TextView
+            style="@style/Widgets.SectionTitle"
+            android:labelFor="@id/sb_tamano"
+            android:text="@string/tamano_titulo" />
+
+        <SeekBar
+            android:id="@+id/sb_tamano"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="2"
+            android:minHeight="48dp"
+            android:progress="1"
+            android:tickMark="@drawable/widget_seek_tick" />
+
+        <TextView
+            android:id="@+id/tv_tamano"
+            style="@style/Widgets.Value"
+            tools:text="Tamaño de muestra: Mediano" />
+
+        <TextView
+            style="@style/Widgets.SectionTitle"
+            android:labelFor="@id/rb_calificacion"
+            android:text="@string/calificacion_titulo" />
+
+        <RatingBar
+            android:id="@+id/rb_calificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5" />
+
+        <TextView
+            android:id="@+id/tv_rating"
+            style="@style/Widgets.Value"
+            tools:text="Calificación: 0.0 / 5" />
+
+        <View style="@style/Widgets.Divider" />
+
+        <TextView
+            style="@style/Widgets.SectionTitle"
+            android:text="@string/calendario_titulo" />
+
+        <CalendarView
+            android:id="@+id/cv_calendario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tv_fecha"
+            style="@style/Widgets.Value"
+            tools:text="Fecha seleccionada: 7 nov 2026" />
+
+        <View style="@style/Widgets.Divider" />
+
+        <TextView
+            style="@style/Widgets.SectionTitle"
+            android:text="@string/busqueda_titulo" />
+
+        <SearchView
+            android:id="@+id/sv_busqueda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="@string/busqueda_ayuda" />
+
+        <ListView
+            android:id="@+id/lv_resultados"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:nestedScrollingEnabled="true" />
+
+        <TextView
+            android:id="@+id/tv_sin_resultados"
+            style="@style/Widgets.Value"
+            android:text="@string/sin_resultados"
+            android:visibility="gone" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
