@@ -1,0 +1,3 @@
+package com.juantito.programacionequiposmoviles
+
+class ConstraintBarrierActivity : LayoutDemoActivity(R.layout.activity_constraint_barrier)

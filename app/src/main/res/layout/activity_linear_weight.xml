@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layouts.Column">
+    <TextView
+        style="@style/Layouts.Title"
+        android:text="@string/linear_weight" />
+
+    <TextView
+        style="@style/Layouts.Text"
+        android:text="@string/linear_weight_desc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp">
+        <!-- Cada botón empieza en 0dp de ancho y recibe una parte igual del espacio. -->
+        <Button
+            android:id="@+id/btn_a"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/letra_a"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/letra_b"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_c"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/letra_c"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layouts.Column"
+    android:orientation="vertical">
+    <TextView
+        style="@style/Layouts.Title"
+        android:text="@string/frame_fragment" />
+
+    <TextView
+        style="@style/Layouts.Text"
+        android:text="@string/frame_fragment_desc" />
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/layouts_surface"
+        android:layout_marginTop="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <Button
+            android:id="@+id/btn_inicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/inicio"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_reporte"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/reporte"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

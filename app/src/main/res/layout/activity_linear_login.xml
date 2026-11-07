@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        style="@style/Layouts.Column"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/Layouts.Title"
+            android:text="@string/linear_login" />
+
+        <TextView
+            style="@style/Layouts.Text"
+            android:text="@string/linear_login_desc" />
+
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"
+            android:hint="@string/correo"
+            android:inputType="textEmailAddress"
+            android:importantForAutofill="no"
+            android:imeOptions="actionNext" />
+
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"
+            android:hint="@string/contrasena"
+            android:inputType="textPassword"
+            android:importantForAutofill="no"
+            android:imeOptions="actionDone"
+            android:saveEnabled="false" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/iniciar_sesion"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+</ScrollView>

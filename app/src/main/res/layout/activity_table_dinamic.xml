@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        style="@style/Layouts.Column"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/Layouts.Title"
+            android:text="@string/table_dinamic" />
+
+        <TextView
+            style="@style/Layouts.Text"
+            android:text="@string/table_dinamic_desc" />
+
+        <TableLayout
+            android:id="@+id/table_productos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:shrinkColumns="1"
+            android:layout_marginTop="12dp">
+            <TableRow
+                android:background="@color/layouts_surface">
+                <TextView
+                    style="@style/Layouts.Cell"
+                    android:text="@string/codigo"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/Layouts.Cell"
+                    android:text="@string/producto"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/Layouts.Cell"
+                    android:text="@string/precio"
+                    android:textStyle="bold"
+                    android:gravity="end" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>

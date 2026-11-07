@@ -23,6 +23,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LinearBasicActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".LinearLoginActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".LinearCardActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".LinearNestedActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".LinearWeightActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".FrameBasicActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".FrameBadgeActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".FrameFragmentActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".RelativeBasicActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".RelativeTransformActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ConstraintBasicActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ConstraintGuidelineActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ConstraintBarrierActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ConstraintChainActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".TableBasicActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".TableDinamicActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ReporteActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".GridBasicActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".GridCalculatorActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".GridGaleriaActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".SpaceBasicActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

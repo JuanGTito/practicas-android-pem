@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layouts.Column">
+    <TextView
+        style="@style/Layouts.Title"
+        android:text="@string/grid_basic" />
+
+    <TextView
+        style="@style/Layouts.Text"
+        android:text="@string/grid_basic_desc" />
+
+    <GridLayout
+        android:id="@+id/grid_basico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:layout_marginTop="12dp">
+        <!-- La primera celda abarca las tres columnas. -->
+        <TextView
+            style="@style/Layouts.GridCell"
+            android:text="@string/grid_ancha"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_columnWeight="3" />
+
+        <TextView
+            style="@style/Layouts.GridCell"
+            android:text="@string/letra_a"
+            android:layout_row="1"
+            android:layout_column="0" />
+
+        <TextView
+            style="@style/Layouts.GridCell"
+            android:text="@string/letra_b"
+            android:layout_row="1"
+            android:layout_column="1" />
+
+        <TextView
+            style="@style/Layouts.GridCell"
+            android:text="@string/letra_c"
+            android:layout_row="1"
+            android:layout_column="2" />
+    </GridLayout>
+</LinearLayout>

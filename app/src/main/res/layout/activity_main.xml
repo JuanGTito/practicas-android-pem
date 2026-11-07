@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/menu_layouts"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/Layouts.Column"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/Layouts.Title"
+            android:text="@string/practica_capitulo_11" />
+
+        <TextView
+            style="@style/Layouts.Text"
+            android:text="@string/layouts_intro" />
+
+        <TextView
+            style="@style/Layouts.Section"
+            android:text="@string/linear_layout" />
+
+        <Button
+            android:id="@+id/btn_linear_basic"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/linear_basic" />
+
+        <Button
+            android:id="@+id/btn_linear_login"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/linear_login" />
+
+        <Button
+            android:id="@+id/btn_linear_card"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/linear_card" />
+
+        <Button
+            android:id="@+id/btn_linear_nested"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/linear_nested" />
+
+        <Button
+            android:id="@+id/btn_linear_weight"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/linear_weight" />
+
+        <TextView
+            style="@style/Layouts.Section"
+            android:text="@string/frame_layout" />
+
+        <Button
+            android:id="@+id/btn_frame_basic"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/frame_basic" />
+
+        <Button
+            android:id="@+id/btn_frame_badge"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/frame_badge" />
+
+        <Button
+            android:id="@+id/btn_frame_fragment"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/frame_fragment" />
+
+        <TextView
+            style="@style/Layouts.Section"
+            android:text="@string/relative_layout" />
+
+        <Button
+            android:id="@+id/btn_relative_basic"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/relative_basic" />
+
+        <Button
+            android:id="@+id/btn_relative_transform"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/relative_transform" />
+
+        <TextView
+            style="@style/Layouts.Section"
+            android:text="@string/constraint_layout" />
+
+        <Button
+            android:id="@+id/btn_constraint_basic"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/constraint_basic" />
+
+        <Button
+            android:id="@+id/btn_constraint_guideline"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/constraint_guideline" />
+
+        <Button
+            android:id="@+id/btn_constraint_barrier"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/constraint_barrier" />
+
+        <Button
+            android:id="@+id/btn_constraint_chain"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/constraint_chain" />
+
+        <TextView
+            style="@style/Layouts.Section"
+            android:text="@string/table_layout" />
+
+        <Button
+            android:id="@+id/btn_table_basic"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/table_basic" />
+
+        <Button
+            android:id="@+id/btn_table_dinamic"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/table_dinamic" />
+
+        <Button
+            android:id="@+id/btn_reporte"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/reporte" />
+
+        <TextView
+            style="@style/Layouts.Section"
+            android:text="@string/grid_layout" />
+
+        <Button
+            android:id="@+id/btn_grid_basic"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/grid_basic" />
+
+        <Button
+            android:id="@+id/btn_grid_calculator"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/grid_calculator" />
+
+        <Button
+            android:id="@+id/btn_grid_galeria"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/grid_galeria" />
+
+        <TextView
+            style="@style/Layouts.Section"
+            android:text="@string/space_layout" />
+
+        <Button
+            android:id="@+id/btn_space_basic"
+            style="@style/Layouts.MenuButton"
+            android:text="@string/space_basic" />
+    </LinearLayout>
+</ScrollView>

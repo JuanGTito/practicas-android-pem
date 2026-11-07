@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        style="@style/Layouts.Column"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/Layouts.Title"
+            android:text="@string/constraint_barrier" />
+
+        <TextView
+            style="@style/Layouts.Text"
+            android:text="@string/constraint_barrier_desc" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/layouts_surface"
+            android:padding="12dp">
+            <TextView
+                style="@style/Layouts.Text"
+                android:text="@string/nombre"
+                android:id="@+id/lbl_nombre"
+                android:labelFor="@id/input_nombre"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:maxWidth="140dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                style="@style/Layouts.Text"
+                android:text="@string/correo_amplio"
+                android:id="@+id/lbl_correo"
+                android:labelFor="@id/input_correo"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:maxWidth="140dp"
+                app:layout_constraintTop_toBottomOf="@id/input_nombre"
+                android:layout_marginTop="16dp" />
+
+            <!-- La barrera toma el extremo de la etiqueta que ocupa más ancho. -->
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="end"
+                app:constraint_referenced_ids="lbl_nombre,lbl_correo" />
+
+            <EditText
+                android:id="@+id/input_nombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginStart="8dp"
+                android:hint="@string/nombre"
+                android:inputType="textPersonName"
+                android:importantForAutofill="no"
+                app:layout_constraintStart_toEndOf="@id/barrera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@id/lbl_nombre" />
+
+            <EditText
+                android:id="@+id/input_correo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginStart="8dp"
+                android:hint="@string/correo"
+                android:inputType="textEmailAddress"
+                android:importantForAutofill="no"
+                app:layout_constraintStart_toEndOf="@id/barrera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@id/lbl_correo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

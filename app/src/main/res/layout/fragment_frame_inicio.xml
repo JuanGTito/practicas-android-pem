@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layouts.Column">
+    <TextView
+        style="@style/Layouts.Title"
+        android:text="@string/inicio" />
+
+    <TextView
+        style="@style/Layouts.Text"
+        android:text="@string/fragment_inicio_desc" />
+</LinearLayout>
