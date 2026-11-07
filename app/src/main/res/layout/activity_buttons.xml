@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pantalla_botones"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/practica_capitulo_9"
+            android:textAppearance="?attr/textAppearanceHeadline5" />
+
+        <!-- Comparamos el botón clásico, el botón Material y el botón con icono. -->
+        <android.widget.Button
+            android:id="@+id/btn_boton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/iniciar_sesion" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/boton_material"
+            app:icon="@drawable/ic_buttons_email" />
+
+        <ImageButton
+            android:id="@+id/ib_email"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/accion_email"
+            app:srcCompat="@drawable/ic_buttons_email"
+            app:tint="?attr/colorOnSurface" />
+
+        <TextView
+            style="@style/TextAppearance.Buttons.Section"
+            android:text="@string/condiciones" />
+
+        <!-- Los chips de filtro son independientes y pueden cerrarse. -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_condiciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:singleSelection="false">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_parking"
+                style="@style/Widget.Buttons.Chip"
+                android:text="@string/parking" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_balcon"
+                style="@style/Widget.Buttons.Chip"
+                android:text="@string/balcon" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_banos"
+                style="@style/Widget.Buttons.Chip"
+                android:text="@string/banos" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_piscina"
+                style="@style/Widget.Buttons.Chip"
+                android:text="@string/piscina" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            style="@style/TextAppearance.Buttons.Section"
+            android:text="@string/destino" />
+
+        <RadioGroup
+            android:id="@+id/rg_vacaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_playa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/playa" />
+
+            <RadioButton
+                android:id="@+id/rb_montana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/montana" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/TextAppearance.Buttons.Section"
+            android:text="@string/transporte" />
+
+        <!-- El selector de fondo dibuja el estado marcado del RadioButton personalizado. -->
+        <RadioGroup
+            android:id="@+id/rg_transporte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/rb_auto"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_auto"
+                style="@style/Widget.Buttons.RadioTransporte"
+                android:text="@string/auto" />
+
+            <RadioButton
+                android:id="@+id/rb_avion"
+                style="@style/Widget.Buttons.RadioTransporte"
+                android:text="@string/avion" />
+
+            <RadioButton
+                android:id="@+id/rb_tren"
+                style="@style/Widget.Buttons.RadioTransporte"
+                android:text="@string/tren" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/TextAppearance.Buttons.Section"
+            android:text="@string/reserva" />
+
+        <CheckBox
+            android:id="@+id/cb_seguro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:minHeight="48dp"
+            android:text="@string/seguro" />
+
+        <android.widget.CheckBox
+            android:id="@+id/cb_cancelable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/buttons_checked_tint"
+            android:checked="true"
+            android:minHeight="48dp"
+            android:onClick="onCheckBoxClicked"
+            android:text="@string/reserva_cancelable" />
+
+        <ToggleButton
+            android:id="@+id/tg_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:minHeight="48dp"
+            android:textOff="@string/toggle_no"
+            android:textOn="@string/toggle_si" />
+
+        <ToggleButton
+            android:id="@+id/tg_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_buttons_checked"
+            android:minHeight="48dp"
+            android:textAllCaps="false"
+            android:textOff="@string/toggle_custom_off"
+            android:textOn="@string/toggle_custom_on" />
+
+        <Switch
+            android:id="@+id/sw_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/switch_normal"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sw_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:minHeight="48dp"
+            android:text="@string/switch_custom"
+            app:thumbTint="@color/buttons_checked_tint" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/accion_fab"
+            app:srcCompat="@drawable/ic_buttons_airplane" />
+    </LinearLayout>
+</ScrollView>

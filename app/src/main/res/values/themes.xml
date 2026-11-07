@@ -2,4 +2,7 @@
 <resources>
 
     <style name="Theme.ProgramacionEquiposMoviles" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Los Chip y el FAB necesitan los atributos de Material Components. -->
+    <style name="Theme.ProgramacionEquiposMoviles.Buttons" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 </resources>
