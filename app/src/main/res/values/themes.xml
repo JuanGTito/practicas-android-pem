@@ -2,4 +2,5 @@
 <resources>
 
     <style name="Theme.ProgramacionEquiposMoviles" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.ProgramacionEquiposMoviles.Palette" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 </resources>

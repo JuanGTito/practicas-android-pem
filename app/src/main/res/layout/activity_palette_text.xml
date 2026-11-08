@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:importantForAutofill="noExcludeDescendants"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/Palette.Title"
+            android:text="@string/capitulo_8" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/palette_intro" />
+
+        <Button
+            android:id="@+id/btn_registro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/abrir_registro" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/texto_presentacion" />
+
+        <TextView
+            android:id="@+id/tv_texto_demostracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_largo"
+            android:minHeight="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="serif"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:letterSpacing="0.02"
+            android:lineSpacingExtra="4dp"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/tv_estado_texto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_reducido" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/texto_simple" />
+
+        <EditText
+            android:id="@+id/et_plain_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords|textAutoCorrect"
+            android:hint="@string/texto_hint"
+            android:maxLength="40"
+            android:imeOptions="actionDone"
+            android:background="@drawable/style_etbg"
+            android:drawableStart="@drawable/ic_palette_persona"
+            android:drawablePadding="10dp"
+            android:minHeight="48dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_ejemplo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/cargar_ejemplo"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:minWidth="0dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp" />
+
+            <Button
+                android:id="@+id/btn_limpiar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/limpiar_texto"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:minWidth="0dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp" />
+
+            <Button
+                android:id="@+id/btn_enfocar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/enfocar_texto"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:minWidth="0dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_vista_previa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vista_previa_vacia" />
+
+        <TextView
+            android:id="@+id/tv_longitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/texto_secreto" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_secreto_ayuda" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/clave_hint"
+            android:saveEnabled="false"
+            android:importantForAutofill="no"
+            android:maxLength="64" />
+
+        <Button
+            android:id="@+id/btn_mostrar_clave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mostrar_clave" />
+
+        <EditText
+            android:id="@+id/et_pin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberPassword"
+            android:hint="@string/pin_hint"
+            android:saveEnabled="false"
+            android:importantForAutofill="no"
+            android:maxLength="6" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/contacto" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/correo_hint"
+            android:maxLength="120" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="@string/telefono_hint"
+            android:maxLength="24" />
+
+        <EditText
+            android:id="@+id/et_postal_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress|textMultiLine"
+            android:hint="@string/direccion_hint"
+            android:minLines="3"
+            android:maxLines="4"
+            android:maxLength="140"
+            android:gravity="top|start"
+            android:scrollbars="vertical" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/nota" />
+
+        <EditText
+            android:id="@+id/et_multiline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine|textCapSentences"
+            android:hint="@string/nota_hint"
+            android:minLines="4"
+            android:maxLines="8"
+            android:maxLength="200"
+            android:gravity="top|start"
+            android:scrollbars="vertical" />
+
+        <TextView
+            android:id="@+id/tv_nota_longitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/hora_fecha" />
+
+        <EditText
+            android:id="@+id/et_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:hint="@string/hora_hint"
+            android:maxLength="5" />
+
+        <EditText
+            android:id="@+id/et_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:hint="@string/fecha_hint"
+            android:maxLength="10" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/numeros" />
+
+        <EditText
+            android:id="@+id/et_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="@string/entero_hint"
+            android:maxLength="10" />
+
+        <EditText
+            android:id="@+id/et_number_signed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:hint="@string/entero_con_signo_hint"
+            android:maxLength="11" />
+
+        <EditText
+            android:id="@+id/et_number_decimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="@string/decimal_hint"
+            android:digits="0123456789.,"
+            android:maxLength="15" />
+
+        <Button
+            android:id="@+id/btn_validar_campos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/validar_campos" />
+
+        <TextView
+            android:id="@+id/tv_validacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite" />
+
+        <TextView
+            android:id="@+id/tv_minutos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_decimal_formateado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/sugerencias" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_paises"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:completionThreshold="2"
+            android:hint="@string/paises_hint"
+            android:maxLength="60" />
+
+        <TextView
+            android:id="@+id/tv_pais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/mactv_tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:completionThreshold="1"
+            android:hint="@string/etiquetas_hint"
+            android:maxLength="160" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sw_separador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/etiquetas_espacios" />
+
+        <TextView
+            android:id="@+id/tv_etiquetas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/Palette.Section"
+            android:text="@string/selecciones" />
+
+        <CheckedTextView
+            android:id="@+id/ctv_opcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:minHeight="48dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/opcion_individual" />
+
+        <ListView
+            android:id="@+id/lv_opciones"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:choiceMode="multipleChoice"
+            android:nestedScrollingEnabled="true" />
+
+        <TextView
+            android:id="@+id/tv_seleccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
