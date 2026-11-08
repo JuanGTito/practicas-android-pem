@@ -2,46 +2,39 @@ package com.juantito.programacionequiposmoviles
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.juantito.programacionequiposmoviles.ui.theme.ProgramacionEquiposMovilesTheme
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+
+const val TAG_PRACTICA_03 = "Practica-03"
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            ProgramacionEquiposMovilesTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+
+        // Ejecutamos los temas síncronos del capítulo 4.
+        Practica03()
+
+        // Las corrutinas se ligan al ciclo de vida de la Activity.
+        lifecycleScope.launch {
+            ejecutarCorrutinasFundamentos()
+            ejecutarCorrutinasFlow()
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ProgramacionEquiposMovilesTheme {
-        Greeting("Android")
-    }
+// Función principal de la práctica 03, siguiendo el patrón de la práctica 01.
+fun Practica03() {
+    ejecutarFuncionesOrdenSuperior()
+    ejecutarFuncionesInline()
+    ejecutarRecursionTailrec()
+    ejecutarGenericos()
+    ejecutarOperadoresColecciones()
+    ejecutarSecuencias()
+    ejecutarManejoErrores()
+    ejecutarLanzamientoExcepciones()
+    ejecutarRunCatchingResult()
+    ejecutarSealedClass()
+    ejecutarDelegacion()
+    ejecutarScopeFunctions()
+    ejecutarTypeAlias()
 }

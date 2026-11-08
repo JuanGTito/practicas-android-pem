@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Práctica N.° 2 — Programación orientada a objetos en Kotlin</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e8edf3; color: #172033; }
+    body { font-family: Arial, Helvetica, sans-serif; font-size: 9.8pt; line-height: 1.42; }
+    .page {
+      position: relative; width: 210mm; min-height: 297mm; margin: 0 auto 8mm;
+      padding: 14mm 20mm 12mm; background: #fff; page-break-after: always;
+      overflow: hidden;
+    }
+    .page:last-child { page-break-after: auto; }
+    h1, h2, h3 { color: #0b3558; margin: 0; }
+    h1 { font-size: 20pt; line-height: 1.18; }
+    h2 { font-size: 15pt; margin-bottom: 4.5mm; padding-bottom: 2.2mm; border-bottom: 1.5px solid #f3a51b; }
+    h3 { font-size: 11.5pt; margin: 3.5mm 0 1.8mm; }
+    p { margin: 0 0 2.3mm; text-align: justify; }
+    ul { margin: 1.5mm 0 2.3mm 5mm; padding-left: 5mm; }
+    li { margin: .9mm 0; }
+    code { font-family: "DejaVu Sans Mono", Consolas, monospace; }
+    .eyebrow { color: #c87900; font-size: 9pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .muted { color: #5c6878; }
+    .small { font-size: 8.7pt; }
+    .lead { font-size: 11pt; line-height: 1.52; color: #293548; }
+    .banner { margin: -14mm -20mm 7mm; height: 8mm; background: linear-gradient(90deg, #092f50 0 72%, #f4a621 72%); }
+    .section-no { display: inline-block; min-width: 9mm; color: #f0a020; }
+    .code-card, .terminal, .result-card, .fact-card {
+      border-radius: 3mm; page-break-inside: avoid;
+    }
+    .code-card { margin: 2mm 0 3mm; background: #111827; color: #e6edf3; border: 1px solid #26354a; }
+    .code-head { display: flex; justify-content: space-between; align-items: center; padding: 2.2mm 4mm; border-bottom: 1px solid #334155; color: #93a4b8; font-size: 8.2pt; }
+    pre { margin: 0; padding: 3mm 4mm; font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 7.5pt; line-height: 1.4; white-space: pre-wrap; }
+    .kw { color: #ff7b72; } .type { color: #79c0ff; } .str { color: #a5d6ff; } .fn { color: #d2a8ff; } .num { color: #79c0ff; } .comment { color: #8b949e; }
+    .terminal { margin: 2mm 0 3mm; background: #0c1524; color: #d8e2f0; border: 1px solid #23344c; overflow: hidden; }
+    .terminal .bar { padding: 2mm 4mm; background: #19283b; color: #a9b8c9; font-size: 8pt; }
+    .terminal pre { font-size: 8pt; }
+    .ok { color: #71d99e; font-weight: 700; }
+    .accent { color: #d07e00; font-weight: 700; }
+    .result-card { padding: 3mm 4mm; background: #eef8f2; border-left: 4px solid #239660; margin: 2mm 0 3mm; }
+    .note { padding: 2.5mm 4mm; border-left: 3px solid #f4a621; background: #fff8e9; margin: 2mm 0; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+    .fact-card { padding: 3mm; background: #f4f7fa; border: 1px solid #dce4ec; }
+    .fact-card strong { display: block; color: #0b3558; margin-bottom: 1.2mm; }
+    table { width: 100%; border-collapse: collapse; margin: 2mm 0 3mm; font-size: 8.6pt; }
+    th { color: #fff; background: #0b3558; text-align: left; }
+    th, td { border: 1px solid #cfdae5; padding: 1.7mm 2.5mm; vertical-align: top; }
+    tr:nth-child(even) td { background: #f7f9fb; }
+    .footer { position: absolute; left: 20mm; right: 20mm; bottom: 4mm; display: flex; justify-content: space-between; color: #7b8796; font-size: 8pt; border-top: 1px solid #dde4ea; padding-top: 1.5mm; }
+    .cover { padding: 15mm 25mm; text-align: center; }
+    .cover .top-line { height: 3mm; margin: -15mm -25mm 14mm; background: linear-gradient(90deg, #0b3558 0 76%, #f4a621 76%); }
+    .cover .university { margin-top: 5mm; color: #101827; font-size: 19pt; font-weight: 800; letter-spacing: .025em; }
+    .cover img { width: 83mm; height: 83mm; object-fit: contain; margin: 7mm auto 6mm; }
+    .cover .school { max-width: 155mm; margin: 0 auto 7mm; font-size: 15pt; line-height: 1.35; font-weight: 800; color: #0b3558; }
+    .cover .rule { width: 28mm; height: 1.2mm; background: #f4a621; margin: 0 auto 8mm; }
+    .cover .title { max-width: 154mm; margin: 5mm auto 8mm; font-size: 17pt; line-height: 1.35; font-weight: 750; }
+    .cover .meta { width: 140mm; margin: 0 auto; padding: 6mm 9mm; text-align: left; background: #f5f7fa; border-radius: 3mm; border: 1px solid #dfe6ed; }
+    .cover .meta p { margin-bottom: 2mm; }
+    .cover .year { margin-top: 8mm; font-weight: 700; color: #0b3558; }
+    .toc td:first-child { width: 75%; }
+    .toc td:last-child { text-align: right; font-weight: 700; color: #0b3558; }
+    .metric { text-align: center; padding: 4mm 2mm; border-radius: 3mm; color: #fff; background: #0b3558; }
+    .metric .number { display: block; font-size: 19pt; font-weight: 800; color: #ffc04d; }
+    .metric .label { font-size: 8.2pt; }
+    .check { color: #168653; font-weight: 700; }
+    .final-page { font-size: 9.1pt; line-height: 1.34; }
+    .final-page h3 { margin: 2.5mm 0 1.3mm; }
+    .final-page li { margin: .45mm 0; }
+    .final-page .fact-card { padding: 2.2mm 3mm !important; margin-bottom: 2mm !important; }
+    .final-page table { font-size: 8.2pt; }
+    .flow { display: flex; align-items: stretch; justify-content: space-between; gap: 2mm; margin: 4mm 0; }
+    .flow > div { flex: 1; text-align: center; padding: 4mm 2mm; border: 1px solid #ced9e4; border-radius: 2.5mm; background: #f7f9fb; font-size: 8.6pt; }
+    .flow .arrow { flex: 0; border: 0; background: none; padding: 4mm 0; color: #e39000; font-size: 15pt; }
+    @media print { html, body { background: #fff; } .page { margin: 0; } }
+  </style>
+</head>
+<body>
+
+  <section class="page cover">
+    <div class="top-line"></div>
+    <div class="university">UNIVERSIDAD NACIONAL DE JULIACA</div>
+    <img src="assets/logo-episs.png" alt="Escuela Profesional de Ingeniería de Software y Sistemas">
+    <div class="school">ESCUELA PROFESIONAL DE INGENIERÍA DE SOFTWARE Y SISTEMAS</div>
+    <div class="rule"></div>
+    <div class="title">Práctica N.° 2: Programación orientada a objetos en Kotlin</div>
+    <div class="meta">
+      <p><strong>Curso:</strong> Programación de Equipos Móviles</p>
+      <p><strong>Proyecto:</strong> ProgramacionEquiposMoviles</p>
+      <p><strong>Rama evaluada:</strong> <code>practica-02</code></p>
+      <p><strong>Integrantes:</strong></p>
+      <ul>
+        <li>Juan Gedeon Tito Moya</li>
+        <li>Yuri Andrea Ramos Suca</li>
+      </ul>
+    </div>
+    <div class="year">Año 2026</div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Práctica 02 · Informe técnico</div>
+    <h2><span class="section-no">1.</span> OBJETIVO</h2>
+    <p class="lead">Aplicar los fundamentos de programación orientada a objetos y las características avanzadas de Kotlin dentro de una aplicación Android, comprobando su correcta compilación y comportamiento mediante pruebas unitarias automatizadas.</p>
+
+    <h2 style="margin-top:9mm"><span class="section-no">2.</span> DESARROLLO</h2>
+    <p>La práctica se implementó en la rama <code>practica-02</code>, commit <code>d06be38</code>. La función de nivel superior <code>main()</code> se invoca desde <code>onCreate()</code> de <code>MainActivity</code>, y la etiqueta <code>PRACTICA-02</code> permite identificar en Logcat los mensajes generados por los ejercicios.</p>
+
+    <div class="flow">
+      <div><strong>onCreate()</strong><br><span class="muted">Inicio de la actividad</span></div>
+      <div class="arrow">→</div>
+      <div><strong>main()</strong><br><span class="muted">Ejecución de ejercicios</span></div>
+      <div class="arrow">→</div>
+      <div><strong>Log.d()</strong><br><span class="muted">Resultados en Logcat</span></div>
+      <div class="arrow">→</div>
+      <div><strong>JUnit</strong><br><span class="muted">Verificación automática</span></div>
+    </div>
+
+    <h3>Contenidos implementados</h3>
+    <div class="grid-2">
+      <div class="fact-card"><strong>Clases y objetos</strong>Singleton, companion object, objetos anónimos, atributos, métodos y distintos constructores.</div>
+      <div class="fact-card"><strong>Funciones Kotlin</strong>Funciones de nivel superior, extensiones, parámetros predeterminados y <code>vararg</code>.</div>
+      <div class="fact-card"><strong>Diseño orientado a objetos</strong>Encapsulamiento, herencia, polimorfismo, abstracción e interfaces.</div>
+      <div class="fact-card"><strong>Características del lenguaje</strong>Lambdas, clases de datos, destructuración, propiedades calculadas y operadores.</div>
+    </div>
+
+    <h3>Estructura del informe</h3>
+    <table class="toc">
+      <tr><td>Pruebas de compilación y ejecución</td><td>3</td></tr>
+      <tr><td>Pruebas funcionales de los contenidos</td><td>4–9</td></tr>
+      <tr><td>Pruebas unitarias automatizadas</td><td>10</td></tr>
+      <tr><td>Resultado y conclusiones</td><td>11</td></tr>
+    </table>
+    <div class="footer"><span>Programación de Equipos Móviles</span><span>2</span></div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Verificación del proyecto</div>
+    <h2><span class="section-no">3.</span> PRUEBAS DE COMPILACIÓN Y EJECUCIÓN</h2>
+    <h3>3.1 Compilación del proyecto Android</h3>
+    <p>Se compiló la variante de depuración mediante Gradle. El proceso completó las tareas de recursos, manifiesto, compilación Kotlin, generación DEX y empaquetado del APK.</p>
+
+    <div class="terminal">
+      <div class="bar">Terminal · rama practica-02</div>
+      <pre>$ ./gradlew assembleDebug --console=plain
+&gt; Task :app:compileDebugKotlin UP-TO-DATE
+&gt; Task :app:dexBuilderDebug
+&gt; Task :app:packageDebug
+&gt; Task :app:assembleDebug
+
+<span class="ok">BUILD SUCCESSFUL in 9s</span>
+36 actionable tasks: 3 executed, 33 up-to-date</pre>
+    </div>
+
+    <div class="result-card"><strong>Resultado:</strong> compilación satisfactoria. Se generó <code>app-debug.apk</code> con un tamaño de 11 789 866 bytes (aprox. 12 MB).</div>
+
+    <h3>3.2 Punto de entrada de la práctica</h3>
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>inicio de ejecución</span></div>
+      <pre><span class="kw">class</span> <span class="type">MainActivity</span> : ComponentActivity() {
+    <span class="kw">override fun</span> <span class="fn">onCreate</span>(savedInstanceState: Bundle?) {
+        <span class="kw">super</span>.onCreate(savedInstanceState)
+        <span class="fn">main</span>()
+        enableEdgeToEdge()
+        setContent { <span class="comment">/* interfaz Compose */</span> }
+    }
+}
+
+<span class="kw">object</span> <span class="type">configurationApp</span> {
+    <span class="kw">const val</span> TAG = <span class="str">"PRACTICA-02"</span>
+    <span class="kw">const val</span> VERSION = <span class="str">"1.0.2"</span>
+    <span class="kw">var</span> userActive: String = <span class="str">"guest"</span>
+}</pre>
+    </div>
+
+    <p>La llamada directa a <code>main()</code> hace que los casos de demostración se ejecuten al iniciar la actividad. La constante <code>TAG</code> centraliza el filtro utilizado por los mensajes de diagnóstico.</p>
+
+    <div class="grid-3">
+      <div class="metric"><span class="number">85</span><span class="label">archivos Kotlin de producción</span></div>
+      <div class="metric"><span class="number">604</span><span class="label">líneas en MainActivity.kt</span></div>
+      <div class="metric"><span class="number">0</span><span class="label">errores de compilación</span></div>
+    </div>
+    <div class="footer"><span>Práctica N.° 2 · Evidencia de compilación</span><span>3</span></div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Objetos, clases y estado</div>
+    <h2><span class="section-no">3.3</span> OBJETOS, CLASES Y ENCAPSULAMIENTO</h2>
+    <p>Se probaron tres modalidades de objetos: un singleton declarado con <code>object</code>, un <code>companion object</code> accesible desde su clase y un objeto anónimo que implementa una interfaz.</p>
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>objetos</span></div>
+      <pre><span class="kw">object</span> <span class="type">configurationApp</span> {
+    <span class="kw">const val</span> attempts = <span class="num">5</span>
+    <span class="kw">fun</span> <span class="fn">mostrarInfo</span>() = Log.d(TAG,
+        <span class="str">"My version: $VERSION, Usuario: $userActive"</span>)
+}
+
+<span class="kw">class</span> <span class="type">validator</span> {
+    <span class="kw">companion object</span> {
+        <span class="kw">const val</span> MIN_AGE = <span class="num">18</span>
+        <span class="kw">fun</span> <span class="fn">isvalid</span>(age: Int) = age &gt;= MIN_AGE
+    }
+}
+
+<span class="kw">val</span> myNotification = <span class="kw">object</span> : notification {
+    <span class="kw">override fun</span> <span class="fn">send</span>() {
+        Log.d(TAG, <span class="str">"Send notification anonymous ..."</span>)
+    }
+}</pre>
+    </div>
+
+    <h3>Validación y protección del estado</h3>
+    <p>Las clases <code>Temperature</code>, <code>Counter</code>, <code>UserE</code>, <code>SavingsAccount</code> y <code>ProductEC</code> aplican encapsulamiento para controlar el acceso y mantener valores válidos.</p>
+    <div class="code-card">
+      <div class="code-head"><span>Temperature.kt</span><span>propiedad validada</span></div>
+      <pre><span class="kw">var</span> celsius: Double = <span class="num">0.0</span>
+    <span class="kw">set</span>(value) {
+        <span class="kw">if</span> (value &gt;= <span class="num">-273.15</span>) field = value
+        <span class="kw">else</span> Log.d(TAG, <span class="str">"Invalid temperature"</span>)
+    }
+
+<span class="kw">val</span> fahrenheit: Double
+    <span class="kw">get</span>() = celsius * <span class="num">9</span> / <span class="num">5</span> + <span class="num">32</span></pre>
+    </div>
+
+    <div class="note"><strong>Comprobación:</strong> al asignar <code>100.0</code> se obtiene <code>212.0 °F</code>; el intento de asignar <code>-300.0</code> es rechazado por estar por debajo del cero absoluto.</div>
+
+    <table>
+      <tr><th>Clase</th><th>Mecanismo aplicado</th><th>Finalidad</th></tr>
+      <tr><td>Counter</td><td><code>private set</code></td><td>Modificar el contador solo mediante métodos.</td></tr>
+      <tr><td>UserE</td><td>Contraseña privada</td><td>Exponer únicamente una operación de verificación.</td></tr>
+      <tr><td>SavingsAccount</td><td>Saldo privado</td><td>Validar depósitos y retiros.</td></tr>
+      <tr><td>ProductEC</td><td>Constructor privado y fábrica</td><td>Crear productos con precio válido.</td></tr>
+    </table>
+    <div class="footer"><span>Práctica N.° 2 · Clases y encapsulamiento</span><span>4</span></div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Funciones idiomáticas de Kotlin</div>
+    <h2><span class="section-no">3.4</span> FUNCIONES Y EXTENSIONES</h2>
+    <p>La práctica incluye funciones de nivel superior con expresiones compactas, argumentos predeterminados y reglas de negocio, además de extensiones sobre tipos existentes.</p>
+
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>funciones de nivel superior</span></div>
+      <pre><span class="kw">fun</span> <span class="fn">calculateIGV</span>(amount: Double, percentage: Double = <span class="num">0.18</span>) =
+    amount * percentage
+
+<span class="kw">fun</span> <span class="fn">obtainCategory</span>(score: Int): String = <span class="kw">when</span> {
+    score &gt;= <span class="num">18</span> -&gt; <span class="str">"Excellent"</span>
+    score &gt;= <span class="num">14</span> -&gt; <span class="str">"Well"</span>
+    score &gt;= <span class="num">11</span> -&gt; <span class="str">"Regular"</span>
+    <span class="kw">else</span>        -&gt; <span class="str">"Disapproved"</span>
+}</pre>
+    </div>
+
+    <h3>Funciones de extensión</h3>
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt / ProductF.kt</span><span>extensiones</span></div>
+      <pre><span class="kw">fun</span> String.<span class="fn">capitalizar</span>() =
+    trim().replaceFirstChar { it.uppercase() }
+
+<span class="kw">fun</span> Int.<span class="fn">factorial</span>(): Long =
+    <span class="kw">if</span> (<span class="kw">this</span> &lt;= <span class="num">1</span>) <span class="num">1</span> <span class="kw">else this</span> * (<span class="kw">this</span> - <span class="num">1</span>).factorial()
+
+<span class="kw">fun</span> ProductF.<span class="fn">priceWithIGV</span>() = price * <span class="num">1.18</span>
+<span class="kw">fun</span> ProductF.<span class="fn">isAvailable</span>() = stock &gt; <span class="num">0</span>
+<span class="kw">fun</span> List&lt;ProductF&gt;.<span class="fn">inventoryTotal</span>() =
+    sumOf { it.price * it.stock }</pre>
+    </div>
+
+    <h3>Parámetros variables</h3>
+    <div class="grid-2">
+      <div class="fact-card"><strong><code>sumAll(vararg)</code></strong>Recibe una cantidad variable de números y devuelve su suma.</div>
+      <div class="fact-card"><strong><code>showOptions(vararg)</code></strong>Enumera opciones con <code>forEachIndexed</code>.</div>
+      <div class="fact-card"><strong><code>greatest(vararg)</code></strong>Obtiene el mayor entero o devuelve cero.</div>
+      <div class="fact-card"><strong>Visibilidad</strong>Se probaron funciones públicas, <code>internal</code> y <code>private</code>.</div>
+    </div>
+
+    <table>
+      <tr><th>Expresión ejecutada</th><th>Resultado esperado/verificado</th></tr>
+      <tr><td><code>calculateIGV(250.0)</code></td><td><code>45.0</code></td></tr>
+      <tr><td><code>" hello world".capitalizar()</code></td><td><code>"Hello world"</code></td></tr>
+      <tr><td><code>5.factorial()</code></td><td><code>120</code></td></tr>
+      <tr><td><code>sumAll(1.0, 2.5, 3.0, 4.5)</code></td><td><code>11.0</code></td></tr>
+    </table>
+    <div class="footer"><span>Práctica N.° 2 · Funciones Kotlin</span><span>5</span></div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Creación, ciclo de vida y operadores</div>
+    <h2><span class="section-no">3.5</span> CONSTRUCTORES, RECURSOS Y SOBRECARGA</h2>
+    <h3>Constructores</h3>
+    <p>Se implementaron constructores primarios, bloques <code>init</code>, constructores secundarios, argumentos predeterminados y argumentos con nombre. Las clases <code>PersonCP</code>, <code>PersonCBI</code>, <code>PersonCS</code>, <code>PersonSVD</code>, <code>ProductAN</code>, <code>AccountSC</code> y <code>VehicleBI</code> muestran estas variantes.</p>
+
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>sobrecarga de constructores</span></div>
+      <pre><span class="fn">PersonSVD</span>(<span class="str">"Jean"</span>, <span class="num">25</span>, <span class="str">"jean@mail.com"</span>).logData()
+<span class="fn">PersonSVD</span>(<span class="str">"Ana"</span>, <span class="num">30</span>).logData()
+<span class="fn">PersonSVD</span>(<span class="str">"Luis"</span>).logData()
+
+<span class="fn">ProductAN</span>(name = <span class="str">"Laptop"</span>, price = <span class="num">3500.0</span>).logInfo()
+<span class="fn">ProductAN</span>(name = <span class="str">"Mouse"</span>, stock = <span class="num">50</span>,
+          category = <span class="str">"Peripherals"</span>).logInfo()</pre>
+    </div>
+
+    <h3>Gestión determinista de recursos</h3>
+    <p>Las clases <code>DatabaseConnection</code> y <code>UserSession</code> implementan <code>Closeable</code>. El bloque <code>use</code> garantiza el cierre del recurso incluso si ocurre una excepción.</p>
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>recursos</span></div>
+      <pre><span class="fn">DatabaseConnection</span>(<span class="str">"users.db"</span>).use { database -&gt;
+    Log.d(TAG, database.query(<span class="str">"SELECT * FROM users"</span>))
+}
+
+<span class="fn">UserSession</span>(<span class="str">"user_42"</span>).use {
+    Log.d(TAG, it.obtainData())
+}</pre>
+    </div>
+
+    <h3>Sobrecarga de métodos y operadores</h3>
+    <p><code>Calculator</code> sobrecarga <code>add</code> para enteros, decimales, tres valores y listas. <code>Vector</code> redefine <code>plus</code>, <code>minus</code> y <code>times</code>; <code>Matrix</code> redefine <code>get</code> y <code>set</code>.</p>
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>operadores</span></div>
+      <pre><span class="kw">val</span> vector1 = <span class="fn">Vector</span>(<span class="num">3.0</span>, <span class="num">4.0</span>)
+<span class="kw">val</span> vector2 = <span class="fn">Vector</span>(<span class="num">1.0</span>, <span class="num">2.0</span>)
+Log.d(TAG, <span class="str">"${vector1 + vector2}"</span>)   <span class="comment">// Vector(4.0, 6.0)</span>
+Log.d(TAG, <span class="str">"${vector1 * 2.0}"</span>)       <span class="comment">// Vector(6.0, 8.0)</span>
+
+<span class="kw">val</span> matrix = <span class="fn">Matrix</span>(<span class="num">2</span>, <span class="num">3</span>)
+matrix[<span class="num">1</span>, <span class="num">2</span>] = <span class="num">5.0</span>
+Log.d(TAG, <span class="str">"${matrix[1, 2]}"</span>)</pre>
+    </div>
+    <div class="footer"><span>Práctica N.° 2 · Constructores y operadores</span><span>6</span></div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Reutilización y comportamiento dinámico</div>
+    <h2><span class="section-no">3.6</span> HERENCIA Y POLIMORFISMO</h2>
+    <p>Las jerarquías de animales, figuras, vehículos, productos, notificaciones y cuentas muestran la reutilización de estado y comportamiento mediante clases <code>open</code>, métodos sobrescritos y llamadas a <code>super</code>.</p>
+
+    <div class="flow">
+      <div><strong>AnimalP</strong><br><span class="muted">clase base</span></div>
+      <div class="arrow">→</div>
+      <div><strong>DogP</strong><br><span class="muted">makeSound()</span></div>
+      <div><strong>CatP</strong><br><span class="muted">makeSound()</span></div>
+      <div><strong>CowP</strong><br><span class="muted">makeSound()</span></div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>colección polimórfica</span></div>
+      <pre><span class="kw">val</span> animalsP: List&lt;AnimalP&gt; = listOf(
+    <span class="fn">DogP</span>(<span class="str">"Rex"</span>), <span class="fn">CatP</span>(<span class="str">"Luna"</span>), <span class="fn">CowP</span>(<span class="str">"Lola"</span>),
+    <span class="fn">DogP</span>(<span class="str">"Max"</span>), <span class="fn">CatP</span>(<span class="str">"Mishi"</span>)
+)
+<span class="fn">processAnimals</span>(animalsP)</pre>
+    </div>
+
+    <h3>Polimorfismo con figuras</h3>
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt / ShapeP.kt</span><span>área polimórfica</span></div>
+      <pre><span class="kw">val</span> shapesP: List&lt;ShapeP&gt; = listOf(
+    <span class="fn">RectangleP</span>(<span class="str">"red"</span>, <span class="num">5.0</span>, <span class="num">3.0</span>),
+    <span class="fn">CircleP</span>(<span class="str">"blue"</span>, <span class="num">4.0</span>),
+    <span class="fn">TriangleP</span>(<span class="str">"green"</span>, <span class="num">6.0</span>, <span class="num">4.0</span>)
+)
+shapesP.forEach { <span class="fn">showShapeInfo</span>(it) }
+Log.d(TAG, <span class="str">"Total area: ${calculateTotalArea(shapesP)}"</span>)</pre>
+    </div>
+
+    <p>La función <code>calculateTotalArea</code> opera sobre el tipo base <code>ShapeP</code>; cada subclase aporta su propia implementación de <code>calculateArea()</code>. También se probaron comprobación y conversión segura de tipos con <code>is</code> y <code>as?</code>.</p>
+
+    <table>
+      <tr><th>Jerarquía</th><th>Subclases utilizadas</th><th>Comportamiento especializado</th></tr>
+      <tr><td>AnimalH</td><td>DogH, CatH</td><td>Sonido, búsqueda y escalada.</td></tr>
+      <tr><td>ShapeH / ShapeP</td><td>Rectángulo, círculo, triángulo, pentágono, rombo</td><td>Cálculo de áreas.</td></tr>
+      <tr><td>VehicleH</td><td>SportsCar, PickupTruck</td><td>Turbo y capacidad de carga.</td></tr>
+      <tr><td>ProductH</td><td>DigitalProduct, PhysicalProduct</td><td>Descarga y costo de envío.</td></tr>
+      <tr><td>NotificationH</td><td>UrgentNotificationH, SilentNotificationH</td><td>Registro y presentación diferenciada.</td></tr>
+    </table>
+    <div class="footer"><span>Práctica N.° 2 · Herencia y polimorfismo</span><span>7</span></div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Contratos y composición</div>
+    <h2><span class="section-no">3.7</span> ABSTRACCIÓN, INTERFACES Y COLABORACIÓN</h2>
+    <h3>Clases abstractas</h3>
+    <p>Las clases <code>EmployeeA</code>, <code>PaymentProcess</code>, <code>GameA</code> y <code>NotificationA</code> definen una base común y delegan a las subclases la implementación de operaciones específicas.</p>
+
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>abstracción</span></div>
+      <pre><span class="kw">val</span> team: List&lt;EmployeeA&gt; = listOf(
+    <span class="fn">Developer</span>(<span class="str">"Jean"</span>, <span class="str">"EMP-001"</span>, <span class="str">"Kotlin"</span>),
+    <span class="fn">ProjectManager</span>(<span class="str">"Ana"</span>, <span class="str">"EMP-002"</span>, <span class="num">5</span>),
+    <span class="fn">Designer</span>(<span class="str">"Luis"</span>, <span class="str">"EMP-003"</span>)
+)
+team.forEach { it.showInfo() }</pre>
+    </div>
+
+    <h3>Interfaces</h3>
+    <p>Se implementaron contratos para exportación, persistencia, documentos, registro del sistema y notificaciones. La interfaz permite cambiar la implementación sin modificar el código consumidor.</p>
+    <table>
+      <tr><th>Contrato</th><th>Implementaciones</th><th>Prueba realizada</th></tr>
+      <tr><td>Exportable</td><td>PdfExporter, CsvExporter, JsonExporter</td><td>Validar y exportar la misma cadena.</td></tr>
+      <tr><td>Registrable</td><td>UserRepository, ProductRepository</td><td>Registrar, buscar y eliminar.</td></tr>
+      <tr><td>NotifierI</td><td>Email, SMS, Push</td><td>Enviar la misma alerta por tres canales.</td></tr>
+      <tr><td>Printable / Shareable / Downloadable</td><td>DocumentI, ImageI</td><td>Combinar múltiples capacidades.</td></tr>
+    </table>
+
+    <h3>Colaboración y composición</h3>
+    <div class="grid-2">
+      <div class="fact-card"><strong>CarC + Engine</strong>El automóvil delega al motor las operaciones de encendido y apagado.</div>
+      <div class="fact-card"><strong>PrintOffice + Printer</strong>La oficina coordina una impresora y un documento.</div>
+      <div class="fact-card"><strong>Classroom + StudentC</strong>Agrega estudiantes, muestra resultados y calcula el promedio.</div>
+      <div class="fact-card"><strong>SmartWatch + Battery + Gps</strong>Compone capacidades independientes en un dispositivo.</div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>inyección por interfaz</span></div>
+      <pre><span class="fn">OrderService</span>(<span class="fn">OrderEmail</span>(<span class="str">"jean@mail.com"</span>))
+    .confirmOrder(<span class="str">"ORD-001"</span>)
+
+<span class="fn">OrderService</span>(<span class="fn">OrderSms</span>(<span class="str">"+51 999 888 777"</span>))
+    .cancelOrder(<span class="str">"ORD-002"</span>)</pre>
+    </div>
+    <div class="footer"><span>Práctica N.° 2 · Abstracción y colaboración</span><span>8</span></div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Código funcional y modelos de valor</div>
+    <h2><span class="section-no">3.8</span> LAMBDAS, OBJETOS ANÓNIMOS Y DATA CLASS</h2>
+    <h3>Lambdas y funciones de orden superior</h3>
+    <p>Las lambdas se almacenan en variables, se asignan como eventos y se reciben como parámetros. Esto permite separar la operación de la lógica que decide cómo transformar, validar, filtrar o presentar datos.</p>
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>lambdas</span></div>
+      <pre><span class="kw">val</span> greetingLambda: (String) -&gt; String =
+    { name -&gt; <span class="str">"Hello, $name!"</span> }
+<span class="kw">val</span> duplicateLambda: (Int) -&gt; Int = { it * <span class="num">2</span> }
+
+<span class="kw">val</span> buttonL = <span class="fn">ButtonL</span>(<span class="str">"Send"</span>)
+buttonL.onClick = {
+    Log.d(TAG, <span class="str">"Sending form..."</span>)
+    Log.d(TAG, <span class="str">"Validating data..."</span>)
+}
+buttonL.onValidate = { text -&gt; text.length &gt;= <span class="num">3</span> }</pre>
+    </div>
+
+    <p>También se utilizaron comparadores y listeners creados como objetos anónimos, además de una <code>fun interface</code> instanciada mediante SAM conversion.</p>
+
+    <h3>Clases de datos</h3>
+    <div class="code-card">
+      <div class="code-head"><span>MainActivity.kt</span><span>igualdad, copia y destructuración</span></div>
+      <pre><span class="kw">val</span> pointData1 = <span class="fn">PointData</span>(<span class="num">3</span>, <span class="num">5</span>)
+<span class="kw">val</span> pointData2 = <span class="fn">PointData</span>(<span class="num">3</span>, <span class="num">5</span>)
+Log.d(TAG, <span class="str">"${pointData1 == pointData2}"</span>)  <span class="comment">// true</span>
+
+<span class="kw">val</span> configBase = <span class="fn">ConfigurationData</span>()
+Log.d(TAG, <span class="str">"${configBase.copy(theme = "dark")}"</span>)
+
+<span class="kw">val</span> coordinate = <span class="fn">CoordinateData</span>(<span class="num">-16.4</span>, <span class="num">-71.5</span>, <span class="num">2335.0</span>)
+<span class="kw">val</span> (latitude, longitude, altitude) = coordinate</pre>
+    </div>
+
+    <table>
+      <tr><th>Característica</th><th>Uso comprobado</th></tr>
+      <tr><td><code>equals()</code> por valor</td><td>Dos <code>PointData(3, 5)</code> son iguales, a diferencia de dos objetos normales.</td></tr>
+      <tr><td><code>copy()</code></td><td>Se crea una configuración modificando solo tema, idioma o tamaño de fuente.</td></tr>
+      <tr><td>Destructuración</td><td>Se extraen coordenadas y el resultado de una búsqueda en variables separadas.</td></tr>
+      <tr><td>Métodos propios</td><td><code>EmployeeData</code> calcula bonificación y determina antigüedad.</td></tr>
+    </table>
+
+    <div class="result-card"><strong>Resultado:</strong> se verificó que las clases de datos reducen código repetitivo y representan correctamente valores comparables, copiables y destructurables.</div>
+    <div class="footer"><span>Práctica N.° 2 · Lambdas y data class</span><span>9</span></div>
+  </section>
+
+  <section class="page">
+    <div class="banner"></div>
+    <div class="eyebrow">Evidencia automatizada</div>
+    <h2><span class="section-no">3.9</span> PRUEBAS UNITARIAS</h2>
+    <p>Se ejecutó la tarea <code>testDebugUnitTest</code>. El proyecto contiene seis casos específicos para los ejercicios del capítulo y un caso base del proyecto; los siete finalizaron correctamente.</p>
+
+    <div class="terminal">
+      <div class="bar">Terminal · Gradle Test Runner</div>
+      <pre>$ ./gradlew testDebugUnitTest --console=plain
+&gt; Task :app:compileDebugUnitTestKotlin UP-TO-DATE
+&gt; Task :app:testDebugUnitTest UP-TO-DATE
+
+<span class="ok">BUILD SUCCESSFUL in 10s</span>
+24 actionable tasks: 4 executed, 20 up-to-date</pre>
+    </div>
+
+    <div class="grid-3">
+      <div class="metric"><span class="number">7</span><span class="label">pruebas ejecutadas</span></div>
+      <div class="metric"><span class="number">0</span><span class="label">fallos</span></div>
+      <div class="metric"><span class="number">0</span><span class="label">errores</span></div>
+    </div>
+
+    <h3>Casos verificados</h3>
+    <table>
+      <tr><th>Prueba</th><th>Aspecto cubierto</th><th>Estado</th></tr>
+      <tr><td>topLevelAndExtensionFunctionsReturnExpectedValues</td><td>IGV, capitalización, correo y factorial.</td><td class="check">APROBADA</td></tr>
+      <tr><td>productExtensionsCalculateAvailabilityAndTax</td><td>Disponibilidad y precio con IGV.</td><td class="check">APROBADA</td></tr>
+      <tr><td>overloadedOperatorsProduceExpectedResults</td><td>Suma, multiplicación y magnitud de vectores.</td><td class="check">APROBADA</td></tr>
+      <tr><td>matrixIndexOperatorsStoreAndReadValues</td><td>Operadores indexados <code>get</code>/<code>set</code>.</td><td class="check">APROBADA</td></tr>
+      <tr><td>calculatedPropertiesAndPolymorphismReturnExpectedAreas</td><td>Propiedades calculadas y área total.</td><td class="check">APROBADA</td></tr>
+      <tr><td>dataClassSupportsValueEqualityCopyAndDestructuring</td><td>Igualdad, copia y destructuración.</td><td class="check">APROBADA</td></tr>
+      <tr><td>addition_isCorrect</td><td>Prueba base del proyecto.</td><td class="check">APROBADA</td></tr>
+    </table>
+
+    <div class="note"><strong>Fuente de evidencia:</strong> archivos XML de resultados generados en <code>app/build/test-results/testDebugUnitTest/</code>. Los registros reportan <code>tests="7"</code>, <code>failures="0"</code> y <code>errors="0"</code>.</div>
+
+    <div class="footer"><span>Práctica N.° 2 · Pruebas unitarias</span><span>10</span></div>
+  </section>
+
+  <section class="page final-page">
+    <div class="banner"></div>
+    <div class="eyebrow">Síntesis</div>
+    <h2><span class="section-no">4.</span> RESULTADO DE LA PRÁCTICA</h2>
+    <p class="lead">La rama <code>practica-02</code> compila correctamente, genera un APK de depuración y supera todas las pruebas unitarias disponibles. La implementación demuestra el uso integrado de los principales mecanismos de programación orientada a objetos e idiomáticos de Kotlin.</p>
+
+    <h3>Resultados verificados</h3>
+    <ul>
+      <li>Creación de objetos singleton, companion objects y objetos anónimos.</li>
+      <li>Modelado mediante clases, propiedades, métodos y diferentes tipos de constructores.</li>
+      <li>Encapsulamiento del estado con validación, getters, setters y <code>field</code>.</li>
+      <li>Funciones de nivel superior, extensiones, argumentos predeterminados y <code>vararg</code>.</li>
+      <li>Sobrecarga de métodos y operadores para vectores, matrices y comparaciones.</li>
+      <li>Herencia, sobrescritura, polimorfismo, clases abstractas e interfaces.</li>
+      <li>Composición y colaboración entre objetos con responsabilidades separadas.</li>
+      <li>Lambdas, funciones de orden superior, listeners y clases de datos.</li>
+      <li>Gestión segura de recursos mediante <code>Closeable</code> y <code>use</code>.</li>
+    </ul>
+
+    <h3>Conclusiones</h3>
+    <div class="fact-card" style="margin-bottom:3mm"><strong>1. Organización del código</strong>La separación en clases pequeñas permite representar responsabilidades concretas y facilita la reutilización de comportamiento.</div>
+    <div class="fact-card" style="margin-bottom:3mm"><strong>2. Seguridad del estado</strong>El encapsulamiento y la validación de propiedades evitan valores inválidos y reducen cambios accidentales desde otras clases.</div>
+    <div class="fact-card" style="margin-bottom:3mm"><strong>3. Flexibilidad</strong>El polimorfismo, las interfaces y la composición permiten sustituir implementaciones sin modificar a sus consumidores.</div>
+    <div class="fact-card" style="margin-bottom:3mm"><strong>4. Confiabilidad</strong>Las pruebas automáticas confirmaron los resultados de funciones, operadores, propiedades calculadas, polimorfismo y clases de datos.</div>
+
+    <h3>Resumen de evidencia</h3>
+    <table>
+      <tr><th>Elemento</th><th>Resultado</th></tr>
+      <tr><td>Rama / commit</td><td><code>practica-02</code> / <code>d06be38</code></td></tr>
+      <tr><td>Compilación</td><td class="check">BUILD SUCCESSFUL</td></tr>
+      <tr><td>APK generado</td><td><code>app-debug.apk</code> · 11 789 866 bytes</td></tr>
+      <tr><td>Pruebas unitarias</td><td class="check">7 aprobadas · 0 fallos · 0 errores</td></tr>
+      <tr><td>Fecha de verificación</td><td>21 de septiembre de 2026</td></tr>
+    </table>
+
+    <div class="footer"><span>Práctica N.° 2 · Resultado final</span><span>11</span></div>
+  </section>
+
+</body>
+</html>
