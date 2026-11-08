@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_panel"
+            style="@style/Components.Title" />
+
+        <TextView
+            android:id="@+id/tv_contexto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/componentes_mapa_fondo">
+
+            <org.osmdroid.views.MapView
+                android:id="@+id/map_osm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/mapa_descripcion" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_atribucion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical|end"
+            android:text="@string/mapa_atribucion"
+            android:textColor="?android:attr/textColorLink" />
+
+        <Button
+            android:id="@+id/btn_play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reproducir_audio" />
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/detener_audio" />
+
+        <Button
+            android:id="@+id/btn_explicit_intent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ver_detalles" />
+
+        <Button
+            android:id="@+id/btn_implicit_intent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/abrir_mapa_externo" />
+
+        <Button
+            android:id="@+id/btn_animacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/abrir_con_animacion" />
+
+        <Button
+            android:id="@+id/btn_media_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/consultar_foto" />
+
+        <TextView
+            android:id="@+id/tv_foto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+
+        <Button
+            android:id="@+id/btn_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/agregar_widget" />
+    </LinearLayout>
+</ScrollView>

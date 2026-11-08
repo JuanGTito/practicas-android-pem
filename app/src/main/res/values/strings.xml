@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">ProgramacionEquiposMoviles</string>
+    <string name="capitulo_6">Práctica capítulo 6 · Componentes de Android</string>
+    <string name="ciclo_actividad">Ciclo de la actividad: %1$s</string>
+    <string name="modo_avion_activo">Modo avión activado. El mapa puede requerir conexión.</string>
+    <string name="modo_avion_inactivo">Modo avión desactivado</string>
+    <string name="panel_mapa">Mapa</string>
+    <string name="panel_informacion">Información</string>
+    <string name="contexto_mapa">Explora Juliaca con el mapa interactivo y los ejemplos del capítulo.</string>
+    <string name="contexto_informacion">Este panel reutiliza el mismo fragmento en otro contexto.</string>
+    <string name="plaza_juliaca">Plaza de Armas de Juliaca</string>
+    <string name="mapa_descripcion">Mapa interactivo de la Plaza de Armas de Juliaca</string>
+    <string name="mapa_atribucion">© colaboradores de OpenStreetMap</string>
+    <string name="reproducir_audio">Reproducir tono</string>
+    <string name="detener_audio">Detener tono</string>
+    <string name="audio_canal">Audio de la práctica</string>
+    <string name="audio_reproduciendo">Reproduciendo el tono de demostración</string>
+    <string name="audio_no_disponible">No se pudo iniciar el audio</string>
+    <string name="ver_detalles">Ver detalles (intent explícito)</string>
+    <string name="abrir_mapa_externo">Abrir mapa externo (intent implícito)</string>
+    <string name="abrir_con_animacion">Abrir detalles con transición</string>
+    <string name="mapa_externo_no_disponible">No se encontró una aplicación de mapas</string>
+    <string name="navegador_no_disponible">No se encontró un navegador</string>
+    <string name="detalles_titulo">Detalles de Juliaca</string>
+    <string name="detalle_ubicacion">Ubicación recibida: %1$s</string>
+    <string name="animar_texto">Animar texto</string>
+    <string name="consultar_foto">Consultar última foto (MediaStore)</string>
+    <string name="foto_encontrada">Foto disponible más reciente: %1$s (%2$d KB)</string>
+    <string name="foto_sin_nombre">Imagen sin nombre</string>
+    <string name="fotos_vacias">No se encontraron fotos disponibles</string>
+    <string name="fotos_permiso_denegado">Se necesita acceso a fotos para consultar MediaStore</string>
+    <string name="agregar_widget">Añadir widget a la pantalla de inicio</string>
+    <string name="widget_agregar_manual">Abre el menú de widgets del inicio y selecciona Widget Juliaca</string>
+    <string name="widget_nombre">Widget Juliaca</string>
+    <string name="widget_texto">UNAJ · Ingeniería</string>
 </resources>
